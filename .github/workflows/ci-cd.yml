@@ -24,15 +24,15 @@ jobs:
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-oidc-role
-          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: arn:aws:iam::${{ 216040615235 }}:role/github-actions-oidc-role
+          aws-region: ${{ us-east-1 }}
 
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build, tag, and push image to ECR
         env:
-          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+          ECR_REGISTRY: ${{ 216040615235 }}.dkr.ecr.${{ us-east-1 }}.amazonaws.com
         run: |
           aws ecr describe-repositories --repository-names ${{ env.ECR_REPOSITORY }} || \
           aws ecr create-repository --repository-name ${{ env.ECR_REPOSITORY }}
